@@ -7,7 +7,7 @@ export const UsersList = ({ users }) => (
   <Card className={styles["users"]}>
     <ul>
       {users.map((user) => (
-        <li key={user.username}>
+        <li key={user.id}>
           {user.username} ({user.age} years old)
         </li>
       ))}

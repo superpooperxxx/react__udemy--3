@@ -25,7 +25,7 @@ export const AddUser = ({ onAddNewUser, showError }) => {
       return;
     }
 
-    onAddNewUser(user);
+    onAddNewUser({ ...user, id: Math.random().toString() });
 
     setUser(initialUser);
   };
