@@ -5,11 +5,11 @@ import { ErrorModal } from "./UI/ErrorModal/ErrorModal";
 
 function App() {
   const [usersList, setUsersList] = useState([]);
-  const [showError, setShowError] = useState(false);
+  const [error, setError] = useState(null);
 
   const handleAddToUsersList = (user) => {
-    if (showError) {
-      setShowError(false);
+    if (error) {
+      setError(null);
     }
 
     setUsersList((current) => [...current, user]);
@@ -18,15 +18,15 @@ function App() {
   console.log(usersList);
   return (
     <div>
-      {showError && (
+      {error && (
         <ErrorModal
-          title="An error occured!"
-          message="Something went wrong!"
-          onCloseModal={() => setShowError(false)}
+          title={error.title}
+          message={error.message}
+          onCloseModal={() => setError(null)}
         />
       )}
 
-      <AddUser onAddNewUser={handleAddToUsersList} showError={setShowError} />
+      <AddUser onAddNewUser={handleAddToUsersList} showError={setError} />
 
       {usersList.length > 0 && <UsersList users={usersList} />}
     </div>

@@ -17,11 +17,20 @@ export const AddUser = ({ onAddNewUser, showError }) => {
     event.preventDefault();
 
     if (!user.username || !user.age) {
+      showError({
+        title: "Invalid input",
+        message: "All fields are required!",
+      });
+
       return;
     }
 
     if (isNaN(+user.age) || user.age < 1) {
-      showError(true);
+      showError({
+        title: "Invalid input",
+        message: "Age field is invalid!",
+      });
+
       return;
     }
 
